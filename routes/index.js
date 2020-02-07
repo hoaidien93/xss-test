@@ -11,4 +11,13 @@ router.post('/data',(req,res)=>{
   fs.appendFileSync("message.txt",req.body.message + '\n');
   return res.end();
 })
+
+router.get('/getData',(req,res)=>{
+  let data = fs.readFileSync("message.txt",'utf-8');
+  return res.render("message",{
+    data: data
+  });
+});
+
+
 module.exports = router;
