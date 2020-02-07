@@ -7,6 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/data',(req,res)=>{
+	res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log(req.body.message);
   fs.appendFileSync("message.txt",req.body.message + '\n');
   return res.end();
